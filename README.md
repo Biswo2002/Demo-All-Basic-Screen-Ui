@@ -2,7 +2,9 @@
 
 ```
 adb devices
-adb -s ca719fbf reverse tcp:8081 tcp:8081
+d
 npx react-native run-android
+
+then type rnfce
 
 ```
