@@ -11,12 +11,19 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Zocial from 'react-native-vector-icons/Zocial';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Octicons from 'react-native-vector-icons/Octicons';
+import {useNavigation} from '@react-navigation/native';
 
 const Login = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.main}>
       <View style={styles.headline}>
-        <Octicons name="arrow-left" size={30} color={'black'} />
+        <Octicons
+          name="arrow-left"
+          size={30}
+          color={'black'}
+          onPress={() => navigation.goBack()}
+        />
         <Text
           style={{
             fontSize: 25,

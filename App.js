@@ -10,15 +10,48 @@ import React from 'react';
 import {Text} from 'react-native';
 import {Home} from './src';
 import Account from './src/Account';
+import Account2 from './src/Account2';
 import Login from './src/Login';
 import Otp from './src/Otp';
 import Feed from './src/Feed';
+import Second from './src/Second';
+import Shadow from './src/Shadow';
+import Activity from './src/Activity';
+import Add from './src/Add';
+import Discover from './src/Discover';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import DetailsScreen from './src/DetailsScreen';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
 
+const Stack = createNativeStackNavigator();
+
 const App = () => {
-  return <Feed />;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Account2">
+        {/* <Stack.Screen
+          name="Discover"
+          component={Discover}
+          options={{headerShown: false}}
+        /> */}
+        {/* <Stack.Screen name="DetailsScreen" component={DetailsScreen} /> */}
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="Feed" component={Feed} />
+        <Stack.Screen
+          name="Account2"
+          component={Account2}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
 export default App;
