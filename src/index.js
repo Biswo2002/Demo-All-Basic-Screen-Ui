@@ -9,3 +9,5 @@ export {default as Activity} from './Activity';
 export {default as Add} from './Add';
 export {default as Discove} from './Discove';
 export {default as Account2} from './Account2';
+export {default as Allbook} from './Allbook';
+export {default as Book} from './Book';

@@ -22,6 +22,9 @@ import Discover from './src/Discover';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import DetailsScreen from './src/DetailsScreen';
+import Database from './src/Database';
+import Allbook from './src/Allbook';
+import Book from './src/Book';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -31,22 +34,17 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Account2">
-        {/* <Stack.Screen
-          name="Discover"
-          component={Discover}
-          options={{headerShown: false}}
-        /> */}
+      <Stack.Navigator initialRouteName="Allbook">
         {/* <Stack.Screen name="DetailsScreen" component={DetailsScreen} /> */}
         <Stack.Screen
-          name="Login"
-          component={Login}
+          name="Book"
+          component={Book}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="Feed" component={Feed} />
+        {/* <Stack.Screen name="Login" component={Login} /> */}
         <Stack.Screen
-          name="Account2"
-          component={Account2}
+          name="Allbook"
+          component={Allbook}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
