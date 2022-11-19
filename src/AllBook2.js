@@ -6,6 +6,7 @@ import {
   View,
   Image,
   ScrollView,
+  FlatList,
 } from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -13,7 +14,49 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
-const Allbook = () => {
+
+const BOOK_READ = [
+  {
+    id: 'BOOK1',
+    image: require('./bs5.jpg'),
+  },
+  {
+    id: 'BOOK2',
+    image: require('./bs2.jpg'),
+  },
+  {
+    id: 'BOOK3',
+    image: require('./bs3.jpg'),
+  },
+  {
+    id: 'BOOK4',
+    image: require('./bs1.jpg'),
+  },
+  {
+    id: 'BOOK5',
+    image: require('./bs1.jpg'),
+  },
+];
+const BOOK_READ2 = [
+  {
+    id: 'BOOK1',
+    image: require('./bs1.jpg'),
+  },
+  {
+    id: 'BOOK2',
+    image: require('./bs3.jpg'),
+  },
+  {
+    id: 'BOOK3',
+    image: require('./bs1.jpg'),
+  },
+  {
+    id: 'BOOK4',
+    image: require('./1234568.jpg'),
+  },
+];
+
+const AllBook2 = () => {
   return (
     <SafeAreaView style={styles.main}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -29,52 +72,30 @@ const Allbook = () => {
           <TouchableOpacity style={styles.TouchHead}>
             <Text style={styles.Ebook}> Ebook</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              alignItems: 'center',
-            }}>
+          <TouchableOpacity style={{alignItems: 'center'}}>
             <Text style={styles.Audiobooks}>Audiobooks</Text>
           </TouchableOpacity>
         </View>
-        <View style={{marginVertical: 10, paddingVertical: 10}}>
-          <View style={styles.BookIMG2}>
-            <TouchableOpacity>
-              <View>
-                <Image source={require('./bs5.jpg')} style={styles.f1IMG} />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View>
-                <Image source={require('./bs2.jpg')} style={styles.f1IMG} />
-              </View>
-            </TouchableOpacity>
-          </View>
 
-          <View style={styles.BookIMG2}>
-            <TouchableOpacity>
-              <View>
-                <Image source={require('./bs1.jpg')} style={styles.f1IMG} />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View>
-                <Image source={require('./1234568.jpg')} style={styles.f1IMG} />
-              </View>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.BookIMG2}>
-            <TouchableOpacity>
-              <View>
-                <Image source={require('./bs4.jpg')} style={styles.f1IMG} />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View>
-                <Image source={require('./bs3.jpg')} style={styles.f1IMG} />
-              </View>
-            </TouchableOpacity>
-          </View>
+        <View style={styles.FlatList}>
+          <FlatList
+            horizontal={false}
+            data={BOOK_READ}
+            renderItem={({item}) => (
+              <TouchableOpacity style={styles.BookIMG2}>
+                <Image style={styles.f1IMG} source={item?.image} />
+              </TouchableOpacity>
+            )}
+          />
+          <FlatList
+            horizontal={false}
+            data={BOOK_READ2}
+            renderItem={({item}) => (
+              <TouchableOpacity style={styles.BookIMG2}>
+                <Image style={styles.f2IMG} source={item?.image} />
+              </TouchableOpacity>
+            )}
+          />
         </View>
       </ScrollView>
       <View style={styles.Button}>
@@ -87,8 +108,7 @@ const Allbook = () => {
     </SafeAreaView>
   );
 };
-
-export default Allbook;
+export default AllBook2;
 
 const styles = StyleSheet.create({
   main: {
@@ -109,7 +129,7 @@ const styles = StyleSheet.create({
   TouchHead: {
     backgroundColor: '#ffff',
     width: 170,
-    height: 45,
+    height: 55,
     alignItems: 'center',
     borderRadius: 10,
     marginRight: 50,
@@ -119,7 +139,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: '#f7f7f7',
     width: 380,
-    height: 55,
+    height: 65,
     marginHorizontal: 20,
     alignItems: 'center',
     borderRadius: 10,
@@ -136,15 +156,25 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   BookIMG2: {
-    justifyContent: 'space-evenly',
     flexDirection: 'row',
-    marginTop: 20,
-    marginRight: 5,
+    marginHorizontal: 5,
+    paddingTop: 10,
   },
   f1IMG: {
-    width: 185,
-    height: 300,
+    width: 200,
+    height: 250,
     borderRadius: 20,
+  },
+  f2IMG: {
+    width: 190,
+    height: 315,
+    borderRadius: 20,
+  },
+  FlatList: {
+    marginVertical: 25,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 3,
   },
   Button: {
     flexDirection: 'row',

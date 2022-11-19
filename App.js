@@ -25,6 +25,7 @@ import DetailsScreen from './src/DetailsScreen';
 import Database from './src/Database';
 import Allbook from './src/Allbook';
 import Book from './src/Book';
+import AllBook2 from './src/AllBook2';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -34,7 +35,7 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Allbook">
+      <Stack.Navigator initialRouteName="AllBook2">
         {/* <Stack.Screen name="DetailsScreen" component={DetailsScreen} /> */}
         <Stack.Screen
           name="Book"
@@ -43,8 +44,8 @@ const App = () => {
         />
         {/* <Stack.Screen name="Login" component={Login} /> */}
         <Stack.Screen
-          name="Allbook"
-          component={Allbook}
+          name="AllBook2"
+          component={AllBook2}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
