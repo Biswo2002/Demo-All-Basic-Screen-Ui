@@ -19,8 +19,9 @@ import {useNavigation} from '@react-navigation/native';
 
 const BOOK_READ = [
   {
-    id: 'BOOK1',
+    id: 'HISTORY',
     image: require('./bs5.jpg'),
+    Name: ' hey im the hero of the world',
   },
   {
     id: 'BOOK2',
@@ -105,6 +106,7 @@ const AllBook2 = () => {
                 style={styles.f1IMG}
                 source={item?.image}
               />
+              <Text style={styles.SubText}>{item.Name}</Text>
             </TouchableOpacity>
           )}
         />
@@ -181,5 +183,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     height: 55,
+  },
+  SubText: {
+    fontSize: 22,
   },
 });
