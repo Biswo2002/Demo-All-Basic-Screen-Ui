@@ -16,12 +16,20 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const BOOK_READ = [
   {
-    id: 'HISTORY',
+    id: 'BOOK1',
     image: require('./bs5.jpg'),
-    Name: ' hey im the hero of the world',
+    title: 'Always forgive your enemies, nothing annoys.',
+    history: 'HISTORY',
+    published: 'published from istudio',
+    date: '21 Nov, 2022',
+    rate: 4.7,
+    icon: <AntDesign name="star" size={20} />,
+    review: '892 Ratings on Google play',
+    text: 'I failed the first quarter of a class in school, so I made a fake report card. I did this every quarter that year. I forgot that they mail home the end-year cards, and my mom got it before I could intercept...Read more',
   },
   {
     id: 'BOOK2',
@@ -106,7 +114,7 @@ const AllBook2 = () => {
                 style={styles.f1IMG}
                 source={item?.image}
               />
-              <Text style={styles.SubText}>{item.Name}</Text>
+              {/* <Text style={styles.SubText}>{item.Name}</Text> */}
             </TouchableOpacity>
           )}
         />

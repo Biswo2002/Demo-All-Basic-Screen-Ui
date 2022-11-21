@@ -10,17 +10,39 @@ const ReadBook = () => {
   return (
     <SafeAreaView>
       <View>
-        <View style={styles.Header}>
-          <AntDesign name="left" size={30} color={'#000'} />
-          <Entypo name="dots-three-horizontal" size={30} color={'#000'} />
+        <Text style={{color: 'red'}}>{route.params.Read.history}</Text>
+      </View>
+      <View>
+        <Text style={{color: '#000'}}>{route.params.Read.title}</Text>
+      </View>
+      <View>
+        <View>
+          <Text style={{color: ''}}>{route.params.Read.published}</Text>
+          <View>
+            <Text style={{color: ''}}>{route.params.Read.date}</Text>
+          </View>
         </View>
-        <Text style={styles.History}>{route.params.Read.id}</Text>
-        <Text style={styles.History}>{route.params.Read.Name}</Text>
-
-        <Image
-          source={route.params.Read.image}
-          style={{height: 300, width: 300}}
-        />
+      </View>
+      <View style={styles.mainImage}>
+        <Image source={route.params.Read.image} style={styles.img} />
+      </View>
+      <View>
+        <View>
+          <Text style={{color: ''}}>{route.params.Read.rate}</Text>
+        </View>
+        <View>
+          <Text>{route.params.Read.icon}</Text>
+          <Text>{route.params.Read.icon}</Text>
+          <Text>{route.params.Read.icon}</Text>
+          <Text>{route.params.Read.icon}</Text>
+          <Text>{route.params.Read.icon}</Text>
+        </View>
+      </View>
+      <View>
+        <Text>{route.params.Read.review}</Text>
+      </View>
+      <View>
+        <Text>{route.params.Read.text}</Text>
       </View>
     </SafeAreaView>
   );
@@ -38,5 +60,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 10,
+  },
+  img: {
+    width: 300,
+    height: 200,
+  },
+  mainImage: {
+    alignItems: 'flex-end',
   },
 });
