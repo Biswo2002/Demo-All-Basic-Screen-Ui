@@ -7,13 +7,15 @@ import {
   Image,
   ScrollView,
   FlatList,
+  Dimensions,
+  SafeAreaView,
 } from 'react-native';
 import React from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
 
 const BOOK_READ = [
   {
@@ -36,74 +38,76 @@ const BOOK_READ = [
     id: 'BOOK5',
     image: require('./bs1.jpg'),
   },
-];
-const BOOK_READ2 = [
+
   {
-    id: 'BOOK1',
-    image: require('./bs1.jpg'),
-  },
-  {
-    id: 'BOOK2',
+    id: 'BOOK6',
     image: require('./bs3.jpg'),
   },
+
   {
-    id: 'BOOK3',
+    id: 'BOOK7',
+    image: require('./bs2.jpg'),
+  },
+  {
+    id: 'BOOK8',
+    image: require('./1234568.jpg'),
+  },
+  {
+    id: 'BOOK9',
     image: require('./bs1.jpg'),
   },
   {
-    id: 'BOOK4',
-    image: require('./1234568.jpg'),
+    id: 'BOOK10',
+    image: require('./bs5.jpg'),
   },
 ];
-
 const AllBook2 = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.main}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.Headline}>
-          <Octicons name="three-bars" size={25} color={'#000'} />
-          <Text style={styles.HeadlineBook}>All Books</Text>
-          <Ionicons name="md-search-sharp" size={25} color="#000" />
-        </View>
-
-        {/* Head Button */}
-
-        <View style={styles.Headbutton}>
-          <TouchableOpacity style={styles.TouchHead}>
-            <Text style={styles.Ebook}> Ebook</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={{alignItems: 'center'}}>
-            <Text style={styles.Audiobooks}>Audiobooks</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.FlatList}>
-          <FlatList
-            horizontal={false}
-            data={BOOK_READ}
-            renderItem={({item}) => (
-              <TouchableOpacity style={styles.BookIMG2}>
-                <Image style={styles.f1IMG} source={item?.image} />
-              </TouchableOpacity>
-            )}
-          />
-          <FlatList
-            horizontal={false}
-            data={BOOK_READ2}
-            renderItem={({item}) => (
-              <TouchableOpacity style={styles.BookIMG2}>
-                <Image style={styles.f2IMG} source={item?.image} />
-              </TouchableOpacity>
-            )}
-          />
-        </View>
-      </ScrollView>
-      <View style={styles.Button}>
-        <Ionicons name="ios-home-outline" size={30} color={'gray'} />
-        <MaterialIcons name="location-city" size={30} color={'gray'} />
-        <Feather name="mic" size={30} color={'gray'} />
-        <Feather name="message-square" size={30} color={'gray'} />
-        <Feather name="user" size={30} color={'gray'} />
+      <View style={styles.FlatList}>
+        <FlatList
+          numColumns={2}
+          ListHeaderComponent={
+            <>
+              <View style={styles.Headline}>
+                <Octicons name="three-bars" size={25} color={'#000'} />
+                <Text style={styles.HeadlineBook}>All Books</Text>
+                <Ionicons name="md-search-sharp" size={25} color="#000" />
+              </View>
+              {/* Head Button */}
+              <View style={styles.Headbutton}>
+                <TouchableOpacity style={styles.TouchHead}>
+                  <Text style={styles.Ebook}> Ebook</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{alignItems: 'center'}}>
+                  <Text style={styles.Audiobooks}>Audiobooks</Text>
+                </TouchableOpacity>
+              </View>
+            </>
+          }
+          ListFooterComponent={
+            <View style={styles.Button}>
+              <Ionicons name="ios-home-outline" size={30} color={'gray'} />
+              <MaterialIcons name="location-city" size={30} color={'gray'} />
+              <Feather name="mic" size={30} color={'gray'} />
+              <Feather name="message-square" size={30} color={'gray'} />
+              <Feather name="user" size={30} color={'gray'} />
+            </View>
+          }
+          data={BOOK_READ}
+          renderItem={({item, index}) => (
+            <TouchableOpacity
+              style={styles.BookIMG2}
+              onPress={() => navigation.navigate('ReadBook', {Read: item})}>
+              <Image
+                // style={[styles.f1IMG, {height: index % 2 === 0 ? 300 : 330}]}
+                style={styles.f1IMG}
+                source={item?.image}
+              />
+            </TouchableOpacity>
+          )}
+        />
       </View>
     </SafeAreaView>
   );
@@ -157,17 +161,13 @@ const styles = StyleSheet.create({
   },
   BookIMG2: {
     flexDirection: 'row',
-    marginHorizontal: 5,
+    marginHorizontal: 3,
     paddingTop: 10,
+    width: Dimensions.get('window').width / 2.1,
   },
   f1IMG: {
-    width: 200,
-    height: 250,
-    borderRadius: 20,
-  },
-  f2IMG: {
-    width: 190,
-    height: 315,
+    width: 199,
+    height: 300,
     borderRadius: 20,
   },
   FlatList: {

@@ -8,23 +8,14 @@
 
 import React from 'react';
 import {Text} from 'react-native';
-import {Home} from './src';
+import {Home, ReadBook} from './src';
 import Account from './src/Account';
-import Account2 from './src/Account2';
-import Login from './src/Login';
-import Otp from './src/Otp';
-import Feed from './src/Feed';
-import Second from './src/Second';
-import Shadow from './src/Shadow';
-import Activity from './src/Activity';
-import Add from './src/Add';
-import Discover from './src/Discover';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import DetailsScreen from './src/DetailsScreen';
-import Database from './src/Database';
-import Allbook from './src/Allbook';
-import Book from './src/Book';
+// import Database from './src/Database';
+// import Allbook from './src/Allbook';
+// import Book from './src/Book';
 import AllBook2 from './src/AllBook2';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
@@ -38,9 +29,9 @@ const App = () => {
       <Stack.Navigator initialRouteName="AllBook2">
         {/* <Stack.Screen name="DetailsScreen" component={DetailsScreen} /> */}
         <Stack.Screen
-          name="Book"
-          component={Book}
-          options={{headerShown: false}}
+          name="ReadBook"
+          component={ReadBook}
+          options={{headerShown: true}}
         />
         {/* <Stack.Screen name="Login" component={Login} /> */}
         <Stack.Screen
